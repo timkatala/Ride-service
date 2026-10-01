@@ -149,8 +149,6 @@ submission job applies it right after saving the order id.
 - The provider order is cancelled once after expiration; if that call fails it is only logged.
 - An order created after its booking already expired is not cancelled either.
 - The mock provider keeps its state in memory.
-- The reconciliation job holds the booking's row lock while it calls the provider (up to the 3 s
-  timeout), which keeps it simple but briefly blocks callbacks for that booking.
 - The client sends the price in the request; there is no quote.
 - Callback signatures have no timestamp, so there is no replay protection.
 - A `completed` callback for an already expired booking is rejected with 409 and logged, not
